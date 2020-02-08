@@ -1,31 +1,9 @@
 [package]
-name = "cmsis_rtos2_rs"
+name = "cmsis-rtos2"
 version = "0.1.0"
 authors = ["Todd Stellanova <tstellanova@users.noreply.github.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 cty = "0.2.1"
 
-#cortex-m = "^0.6.0"
-#cortex-m-rt = "0.6.11"
-#stm32h7 = "0.9.0"
-#stm32h7xx-hal = { version = "0.3.0", features = ["stm32h743"] }
-#cortex-m-log = { version = "0.6.1", features = ["log-integration", "itm", "semihosting"] }
-#panic-itm = "~0.4.1"
-
-#[build-dependencies]
-#bindgen = "0.52.0"
-
-#[profile.dev]
-#codegen-units = 1 # better optimizations
-#debug = true # symbols are nice and they don't increase the size in flash
-#incremental = false
-#
-#[profile.release]
-#codegen-units = 1 # better optimizations
-#debug = true # symbols are nice and they don't increase the size in flash
-#lto = true # better optimizations
-#opt-level = "s" # optimize for binary size
