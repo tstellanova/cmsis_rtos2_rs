@@ -14,10 +14,11 @@ pub mod os_tick;
 pub use cmsis_os2::*;
 
 
-#[repr(C)] pub struct MsgQueue { queue_id: usize,  _private: [u8; 0] }
+//#[repr(C)] pub struct MsgQueue { queue_id: usize,  _private: [u8; 0] }
 //#[repr(C)] pub struct Thread { thread_id: osThreadId_t,  _private: [u8; 0] }
 
-
+//unsafe impl Send for MsgQueue {}
+//unsafe impl Sync for MsgQueue {}
 
 pub fn rtos_kernel_initialize() -> cmsis_os2::osStatus_t {
     unsafe {
@@ -82,37 +83,28 @@ pub fn rtos_os_timer_stop(timer_id: osTimerId_t) -> osStatus_t {
 
 pub fn rtos_os_msg_queue_new(msg_count: u32,
                              msg_size: u32,
-                             attr: *const osMessageQueueAttr_t) -> Option<MsgQueue> {
+                             attr: *const osMessageQueueAttr_t) -> osMessageQueueId_t {
     unsafe {
-        let mq_id = cmsis_os2::osMessageQueueNew(msg_count, msg_size, attr);
-        if mq_id.is_null() {
-            None
-        }
-        else {
-            Some(MsgQueue {
-                queue_id: mq_id as usize, //TODO dangerous
-                _private: []
-            })
-        }
+        cmsis_os2::osMessageQueueNew(msg_count, msg_size, attr)
     }
 }
 
-pub fn rtos_os_msg_queue_put(msg_queue: &MsgQueue,
+pub fn rtos_os_msg_queue_put(mq_id: osMessageQueueId_t,
                              msg_ptr: *const cty::c_void,
                              msg_prio: u8,
                              timeout: u32) -> osStatus_t {
     unsafe  {
-        cmsis_os2::osMessageQueuePut(msg_queue.queue_id as osMessageQueueId_t, msg_ptr, msg_prio, timeout)
+        cmsis_os2::osMessageQueuePut(mq_id, msg_ptr, msg_prio, timeout)
     }
 
 }
 
-pub fn rtos_os_msg_queue_get(msg_queue: &MsgQueue,
+pub fn rtos_os_msg_queue_get(mq_id: osMessageQueueId_t,
                              msg_ptr: *mut cty::c_void,
                              msg_prio: *mut u8,
                              timeout: u32) -> osStatus_t {
     unsafe {
-        cmsis_os2::osMessageQueueGet(msg_queue.queue_id as osMessageQueueId_t, msg_ptr, msg_prio, timeout)
+        cmsis_os2::osMessageQueueGet(mq_id, msg_ptr, msg_prio, timeout)
     }
 }
 
