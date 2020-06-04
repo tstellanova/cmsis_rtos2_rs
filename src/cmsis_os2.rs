@@ -1,7 +1,7 @@
 
 /*
 generated using rust-bindgen command:
-` bindgen --use-core --no-layout-tests --ctypes-prefix=cty ../../cmsis_freertos_stm32h7/Drivers/CMSIS/RTOS2/Include/cmsis_os2.h -o cmsis_os2.rs`
+` bindgen --use-core --no-layout-tests --ctypes-prefix=cty /path/to/cmsis_os2.h -o cmsis_os2.rs`
 
 and manually stripped of Darwin prefix
 */

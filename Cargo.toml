@@ -1,8 +1,10 @@
 [package]
 name = "cmsis-rtos2"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Todd Stellanova <tstellanova@users.noreply.github.com>"]
 edition = "2018"
+repository = "https://github.com/tstellanova/cmsis_rtos2_rs"
+description = "A rust wrapper for the CMSIS-RTOS2 API, which should be provided by another library, and linked into the consuming library or application."
 
 [dependencies]
 cty = "0.2.1"

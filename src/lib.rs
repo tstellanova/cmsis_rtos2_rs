@@ -14,12 +14,6 @@ pub mod os_tick;
 pub use cmsis_os2::*;
 
 
-//#[repr(C)] pub struct MsgQueue { queue_id: usize,  _private: [u8; 0] }
-//#[repr(C)] pub struct Thread { thread_id: osThreadId_t,  _private: [u8; 0] }
-
-//unsafe impl Send for MsgQueue {}
-//unsafe impl Sync for MsgQueue {}
-
 pub fn rtos_kernel_initialize() -> cmsis_os2::osStatus_t {
     unsafe {
         cmsis_os2::osKernelInitialize()

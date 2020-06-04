@@ -1,7 +1,7 @@
 
 /*
 generated using rust-bindgen command:
-` bindgen --use-core --no-layout-tests --ctypes-prefix=cty ../../cmsis_freertos_stm32h7/Drivers/CMSIS/RTOS2/Include/os_tick.h -o os_tick.rs`
+` bindgen --use-core --no-layout-tests --ctypes-prefix=cty /path/to/os_tick.h -o os_tick.rs`
 
 and manually stripped of Darwin prefix
 */
